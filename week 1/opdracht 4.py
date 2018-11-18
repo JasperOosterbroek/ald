@@ -1,3 +1,10 @@
+"""
+naam: Jasper Oosterbroek
+studentnummer: 1719848
+klas: TI-V2C
+docent: Frits Dannenberg
+"""
+
 import random
 
 """
