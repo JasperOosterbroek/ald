@@ -45,6 +45,18 @@ def parenthesisProblem(s):
     return True
 
 
-s = "<<<<"
+print(parenthesisProblem("<<<<<"))              #False
+print(parenthesisProblem("((<>)())"))           #True
+print(parenthesisProblem("[(<>)]()(()())"))     #True
+print(parenthesisProblem("((<>))"))             #True
+print(parenthesisProblem("([)]"))               #False
+print(parenthesisProblem("(((<)>))"))           #False
+print(parenthesisProblem("((a))"))              #False
+print(parenthesisProblem(15))                   #False
+print(parenthesisProblem("appelsap"))           #False
 
-print(parenthesisProblem(s))
+
+
+
+
+
