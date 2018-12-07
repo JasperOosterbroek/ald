@@ -39,7 +39,7 @@ class BSTNode:
         elif self.element > e:
             return self.right.rinsert(e)
         else:
-            found = True;
+            found = True
 
         if not found:
             if self.element < e:
@@ -132,7 +132,7 @@ class BSTNode:
         if parent.element < e:
             current = parent.right
         elif parent.element > e:
-            current = parent.left;
+            current = parent.left
         else:
             return None
 
@@ -150,7 +150,7 @@ class BSTNode:
         return parent
 
     def delete(self, e):
-        parent = self.getParent(e);
+        parent = self.getParent(e)
 
         if parent == None:
             return False
@@ -247,7 +247,7 @@ class BST:
                     self.root.element = self.root.right.element
                     self.root.right = self.root.right.right
                 else:
-                    node = self.root.parentMinRightTree();
+                    node = self.root.parentMinRightTree()
                     self.root.element = node.left.element
                     node.left = node.left.right
                 return True
@@ -259,41 +259,52 @@ class BST:
     def showLevelOrder(self):
         current = [self.root]
         elementQueue = myqueue()
-
         while current:
             next = list()
             elements = list()
             for child in current:
-                elements.append(child.element)
-                if child.left:
-                    next.append(child.left)
-                if child.right:
-                    next.append(child.right)
+                if child:
+                    print(child.element)
+                    elements.append(child.element)
+                    if child.left:
+                        next.append(child.left)
+                    if child.right:
+                        next.append(child.right)
+                else:
+                    next.append(None)
+                    next.append(None)
             elementQueue.enqueue(elements)
             current = next
+        self.ppLevelOrder(elementQueue)
 
-        return elementQueue
+    def ppLevelOrder(self, elementQueue):
+        totalWidth = 10 * len(elementQueue)
+        layer = 0
+        nodeList = elementQueue.dequeue()
+        print(nodeList)
+        while nodeList != None:
+            layer += 1
+            for node in nodeList:
+                if node == None:
+                    num = " "
+                else:
+                    num = node
+                print('{num:>{width}}'.format(num=num, width=int(totalWidth / (layer + 1))), end='')
+            print('')
+            nodeList = elementQueue.dequeue()
 
-def pprintQueueAsTree(elementQueue):
-    layerCount = 0
-    for row in elementQueue:
-        string = "Laag " + str(layerCount) + ": "
-        string += "  " * (len(elementQueue) - layerCount)
-        for element in row:
 
-            string += str(element)
-            string += "  " * (len(elementQueue) - layerCount)
 
-        layerCount += 1
-        print(string)
 
 class myqueue(list):
     def __init__(self,a=[]):
         list.__init__(self,a)
 
     def dequeue(self):
-        return self.pop(0)
-
+        try:
+            return self.pop(0)
+        except (IndexError):
+            return None
     def enqueue(self,x):
         self.append(x)
 
@@ -325,7 +336,7 @@ if __name__ == '__main__':
     node = b.search(16)
     if node != None:
         print(node.element)
-    b.insert(17);
+    b.insert(17)
     print(b)
     print('----------------')
     b.delete(14)
@@ -367,6 +378,6 @@ if __name__ == '__main__':
     print("max = " + str(b.max()))
     print(b.rsearch(10))
     print(b.rsearch(99))
-    pprintQueueAsTree(b.showLevelOrder())
+    b.showLevelOrder()
 
     print(b.rsearch(11))
