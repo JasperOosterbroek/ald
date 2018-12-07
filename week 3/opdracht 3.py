@@ -1,3 +1,5 @@
+import pprint
+
 class BSTNode:
     def __init__(self, element, left, right):
         self.element = element
@@ -56,7 +58,7 @@ class BSTNode:
         elif parent.element > e:
             current = parent.left
         else:
-            found = True;
+            found = True
 
         while not found and current:
             parent = current
@@ -272,6 +274,19 @@ class BST:
 
         return elementQueue
 
+def pprintQueueAsTree(elementQueue):
+    layerCount = 0
+    for row in elementQueue:
+        string = "Laag " + str(layerCount) + ": "
+        string += "  " * (len(elementQueue) - layerCount)
+        for element in row:
+
+            string += str(element)
+            string += "  " * (len(elementQueue) - layerCount)
+
+        layerCount += 1
+        print(string)
+
 class myqueue(list):
     def __init__(self,a=[]):
         list.__init__(self,a)
@@ -352,6 +367,6 @@ if __name__ == '__main__':
     print("max = " + str(b.max()))
     print(b.rsearch(10))
     print(b.rsearch(99))
-    print(b.showLevelOrder())
+    pprintQueueAsTree(b.showLevelOrder())
 
     print(b.rsearch(11))
