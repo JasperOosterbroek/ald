@@ -5,7 +5,7 @@ def findDupeHash(samplesize):
     hashDict = dict()
     for i in range(samplesize):
         randV = random.randint(1, 9999999999999999) / 10000000000000000
-        randVHash = hash(randV)
+        randVHash = hash(randV) % 2**16
         if randVHash in hashDict:
             return hashDict[randVHash], randV, randVHash
         else:
