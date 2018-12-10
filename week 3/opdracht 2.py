@@ -85,50 +85,57 @@ class MyCircularLinkedList:
                     self.tail.next = self.tail
             else:
                 current = self.tail
-                while current.next != None and current.next.data != e:
+                start = current
+                while current.next != None and current.next.data != e and current != start:
                     current = current.next
-                if current.next != None:
-                    current.next = current.next.next
-                if current.next == None:
-                    self.tail = current
+                    if current.next != None:
+                        current.next = current.next.next
+                    if current.next == None:
+                        self.tail = current
+            return False
 
 
 
 
 mylist = MyCircularLinkedList()
+# print(mylist) # empty list
+# # mylist.addLast(1)
+# # mylist.addLast(2)
+# # mylist.addLast(3)
+# # print(mylist) # 1 -> 2 -> 3
+# # mylist.delete(2)
+# # print(mylist) # 1 -> 3
+# # mylist.delete(1)
+# # print(mylist) # 3
+# # mylist.delete(3)
+# # print(mylist) # empty list
+# #
+# # print(mylist) # empty list
+# # mylist.addLast(1)
+# # mylist.addLast(2)
+# # mylist.addLast(3)
+# # print(mylist) # 1 -> 2 -> 3
+# # mylist.delete(2)
+# # print(mylist) # 1 -> 3
+# # mylist.delete(3) # hier loopt hij nu stuk
+# # print(mylist) # 1
+# # mylist.delete(1)
+# # print(mylist) # empty list
+# # mylist.delete(3)
+# # print(mylist) #empty list
+# #
+# # mylist.addLast(1)
+# # mylist.addLast(2)
+# # mylist.addLast(3)
+# # print(mylist)
+# # mylist.delete(3)
+# # print(mylist)
+# # mylist.delete(1)
+# # print(mylist)
+# # mylist.delete(2)
+# # print(mylist)
+mylist = MyCircularLinkedList()
 print(mylist) # empty list
 mylist.addLast(1)
 mylist.addLast(2)
-mylist.addLast(3)
-print(mylist) # 1 -> 2 -> 3
-mylist.delete(2)
-print(mylist) # 1 -> 3
-mylist.delete(1)
-print(mylist) # 3
-mylist.delete(3)
-print(mylist) # empty list
-
-print(mylist) # empty list
-mylist.addLast(1)
-mylist.addLast(2)
-mylist.addLast(3)
-print(mylist) # 1 -> 2 -> 3
-mylist.delete(2)
-print(mylist) # 1 -> 3
-mylist.delete(3) # hier loopt hij nu stuk
-print(mylist) # 1
-mylist.delete(1)
-print(mylist) # empty list
-mylist.delete(3)
-print(mylist) #empty list
-
-mylist.addLast(1)
-mylist.addLast(2)
-mylist.addLast(3)
-print(mylist)
-mylist.delete(3)
-print(mylist)
-mylist.delete(1)
-print(mylist)
-mylist.delete(2)
-print(mylist)
+print(mylist.delete(99))

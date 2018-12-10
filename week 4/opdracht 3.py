@@ -11,4 +11,6 @@ def B(n, k):
         return backLoglist[n][k]
 
 
-print(B(100, 50))
+n = 100
+k = 50
+print(B(n, k))

@@ -61,3 +61,7 @@ for i in range(200):
 for i in fractionList:
     hashList.insert(i)
 
+for i in range(100):
+    hashList.delete(fractionList[random.randint(0, 200)])
+
+print(hashList)
